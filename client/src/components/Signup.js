@@ -8,13 +8,14 @@ export default function Signup(){
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [avatar, setAvatar] = useState('');
   const { login } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const submit = async (e) =>{
     e.preventDefault();
     try {
-      const res = await api.post('/auth/signup', { name, email, password });
+  const res = await api.post('/auth/signup', { name, email, password, avatar });
       if (res && res.data){
         localStorage.setItem('token', res.data.token);
         login(res.data.user);
@@ -58,6 +59,15 @@ export default function Signup(){
               onChange={e=>setPassword(e.target.value)}
               placeholder="Create a password"
               required
+            />
+          </div>
+          <div className="form-row">
+            <label>Profile Image URL (optional)</label>
+            <input 
+              type="url" 
+              value={avatar} 
+              onChange={e=>setAvatar(e.target.value)}
+              placeholder="https://example.com/your-photo.jpg"
             />
           </div>
           <button className="btn" type="submit">Sign Up</button>

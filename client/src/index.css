@@ -633,6 +633,35 @@ p strong {
   text-decoration: none;
 }
 
+/* Profile Header */
+.profile-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.profile-left { display: flex; align-items: center; gap: 16px; }
+
+.avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: linear-gradient(135deg, #3ba55d, #5ec778);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 20px rgba(59, 165, 93, 0.35);
+  border: 2px solid rgba(255,255,255,0.08);
+}
+
+.avatar img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.avatar-initials { color: white; font-weight: 800; font-size: 20px; letter-spacing: 1px; }
+
+.greeting-sub { font-size: 12px; text-transform: uppercase; color: rgba(225,232,237,0.6); letter-spacing: 1px; }
+.greeting-name { font-size: 22px; font-weight: 800; color: #e8f1ec; letter-spacing: -0.2px; }
+
 /* Add Action Page - Professional Design */
 .add-action-container {
   max-width: 800px;

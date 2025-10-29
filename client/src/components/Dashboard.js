@@ -83,6 +83,22 @@ export default function Dashboard(){
 
   return (
     <div className="dashboard-container">
+      {/* Profile Header */}
+      <div className="profile-header">
+        <div className="profile-left">
+          <div className="avatar" aria-label="User avatar">
+            {user?.avatar ? (
+              <img src={user.avatar} alt={user.name || 'User'} onError={(e)=>{e.currentTarget.style.display='none'}} />
+            ) : (
+              <div className="avatar-initials">{(user?.name||'U').split(' ').map(w=>w[0]).slice(0,2).join('').toUpperCase()}</div>
+            )}
+          </div>
+          <div className="greeting">
+            <div className="greeting-sub">Welcome back</div>
+            <div className="greeting-name">{user?.name || 'EcoTracker'}</div>
+          </div>
+        </div>
+      </div>
       {/* Hero Section - Score & Badge */}
       <div className="dashboard-hero">
         <div className="hero-content">
