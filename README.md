@@ -119,8 +119,9 @@ npm install
 Create a `.env` file in the **server** directory:
 
 ```env
-# MongoDB Connection
-MONGO_URI=mongodb+srv://<username>:<password>@cluster0.xxxxx.mongodb.net/ecotrack?retryWrites=true&w=majority
+# MongoDB Connection (example for MongoDB Atlas)
+# Replace <db_password> with your database user's password. Do NOT commit secrets to git.
+MONGO_URI=mongodb+srv://povits2005_db_user:<db_password>@cluster0.fsniv8g.mongodb.net/ecotrack?retryWrites=true&w=majority
 
 # JWT Secret (use a strong random string)
 JWT_SECRET=your_super_secret_jwt_key_here
