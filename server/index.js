@@ -9,8 +9,16 @@ console.log('MONGO_URI:', process.env.MONGO_URI);
 console.log('PORT:', process.env.PORT);
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: ['https://ecotrack.onrender.com', 'http://localhost:3000'],
+    credentials: true
+}));
 app.use(express.json());
+
+// Add a health check route
+app.get('/', (req, res) => {
+    res.json({ message: 'EcoTrack API is running' });
+});
 
 app.use('/api/auth', authRoutes);
 app.use('/api/actions', actionRoutes);
