@@ -1,6 +1,6 @@
 # 🌱 EcoTrack – Sustainable Living Tracker
 
-A full-stack MERN (MongoDB, Express.js, React.js, Node.js) web application that helps users track and visualize their eco-friendly activities. Users can log sustainable actions, earn eco points, track progress through interactive analytics, and unlock achievement badges.
+A MERN (MongoDB, Express.js, React.js, Node.js) web application that helps users track and visualize their eco-friendly activities. Users can log sustainable actions, earn eco points, track progress through interactive analytics, and unlock achievement badges.
 
 ---
 

@@ -52,11 +52,25 @@ app.use('/api/actions', actionRoutes);
 
 const PORT = process.env.PORT || 5000;
 
-mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/ecotrack')
+// Helper to start the HTTP server (keeps single place to call listen)
+const startServer = () => {
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+};
+
+// Try to connect to MongoDB. Use a short serverSelectionTimeoutMS so failures surface quickly during dev.
+mongoose.connect(process.env.MONGO_URI || 'mongodb://localhost:27017/ecotrack', {
+  // These options are safe defaults; Mongoose 6 uses them by default but keeping explicit here
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  serverSelectionTimeoutMS: 5000 // 5 seconds
+})
   .then(() => {
     console.log('Connected to MongoDB');
-    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    startServer();
   })
   .catch(err => {
     console.error('Mongo connection error', err);
+    // Start the server even if DB connection fails so you can use health checks and debug CORS/local issues.
+    console.log('Starting server without a MongoDB connection (local dev fallback). Fix the DB settings to enable full API functionality.');
+    startServer();
   });
